@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Warlock's Blog]]></title>
-  <link href="http://SonlyF5020.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Test_Octopress | Warlock's Blog]]></title>
+  <link href="http://SonlyF5020.github.io/blog/categories/test-octopress/atom.xml" rel="self"/>
   <link href="http://SonlyF5020.github.io/"/>
   <updated>2013-11-16T02:57:53+08:00</updated>
   <id>http://SonlyF5020.github.io/</id>
