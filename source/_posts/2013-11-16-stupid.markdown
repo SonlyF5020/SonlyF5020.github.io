@@ -1,0 +1,9 @@
+---
+layout: post
+title: "stupid"
+date: 2013-11-16 03:26
+comments: true
+categories: 
+---
+**if you are stupid**
+do not worry , just let me know !
