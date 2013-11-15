@@ -4,7 +4,7 @@
   <title><![CDATA[Warlock's Blog]]></title>
   <link href="http://SonlyF5020.github.io/atom.xml" rel="self"/>
   <link href="http://SonlyF5020.github.io/"/>
-  <updated>2013-11-16T03:09:45+08:00</updated>
+  <updated>2013-11-16T03:15:26+08:00</updated>
   <id>http://SonlyF5020.github.io/</id>
   <author>
     <name><![CDATA[Warlock]]></name>
@@ -27,6 +27,9 @@ sharing: true
 footer: true</p>
 
 <h2>categories: Test_Octopress </h2>
+
+<p><strong> Hello Warlock</strong>
+This is to fuck you !</p>
 ]]></content>
   </entry>
   
