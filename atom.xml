@@ -4,7 +4,7 @@
   <title><![CDATA[Warlock's Blog]]></title>
   <link href="http://SonlyF5020.github.io/atom.xml" rel="self"/>
   <link href="http://SonlyF5020.github.io/"/>
-  <updated>2013-11-16T03:36:38+08:00</updated>
+  <updated>2013-11-16T03:46:53+08:00</updated>
   <id>http://SonlyF5020.github.io/</id>
   <author>
     <name><![CDATA[Warlock]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[sencond blog]]></title>
+    <link href="http://SonlyF5020.github.io/blog/2013/11/16/sencond-blog/"/>
+    <updated>2013-11-16T03:40:00+08:00</updated>
+    <id>http://SonlyF5020.github.io/blog/2013/11/16/sencond-blog</id>
+    <content type="html"><![CDATA[<p>Sencond One , just want to see the layout of this Octopress</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[stupid]]></title>
