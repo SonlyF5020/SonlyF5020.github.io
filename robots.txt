@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://SonlyF5020.github.io/sitemap.xml 
