@@ -4,7 +4,7 @@
   <title><![CDATA[Warlock's Blog]]></title>
   <link href="http://SonlyF5020.github.io/atom.xml" rel="self"/>
   <link href="http://SonlyF5020.github.io/"/>
-  <updated>2013-11-16T03:15:26+08:00</updated>
+  <updated>2013-11-16T03:32:42+08:00</updated>
   <id>http://SonlyF5020.github.io/</id>
   <author>
     <name><![CDATA[Warlock]]></name>
@@ -14,22 +14,12 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Hello Warlock]]></title>
-    <link href="http://SonlyF5020.github.io/blog/2013/11/16/hello-warlock/"/>
-    <updated>2013-11-16T00:00:00+08:00</updated>
-    <id>http://SonlyF5020.github.io/blog/2013/11/16/hello-warlock</id>
-    <content type="html"><![CDATA[<p>&mdash;
-layout: post
-title: &ldquo;Super Awesome&rdquo;
-date: 2013-11-16 02:45
-comments: true
-sharing: true
-footer: true</p>
-
-<h2>categories: Test_Octopress </h2>
-
-<p><strong> Hello Warlock</strong>
-This is to fuck you !</p>
+    <title type="html"><![CDATA[stupid]]></title>
+    <link href="http://SonlyF5020.github.io/blog/2013/11/16/stupid/"/>
+    <updated>2013-11-16T03:26:00+08:00</updated>
+    <id>http://SonlyF5020.github.io/blog/2013/11/16/stupid</id>
+    <content type="html"><![CDATA[<p><strong>if you are stupid</strong>
+do not worry , just let me know !</p>
 ]]></content>
   </entry>
   
