@@ -5,5 +5,14 @@ date: 2013-11-16 03:26
 comments: true
 categories: 
 ---
-**if you are stupid**
-,do not worry , just let me know !
+大家好，这个玩意好像很好玩的样子:  
+
+```
+Class FirstCLass(){ 
+public static void Main(String[] Args){  
+	System.Out.Printlv("Hello World");  
+    }  
+}
+```
+
+这实在是太他妈的好玩了， 我了个去，还能这么玩的，我去。Thanks Mou。
