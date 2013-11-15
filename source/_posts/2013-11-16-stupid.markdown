@@ -6,4 +6,4 @@ comments: true
 categories: 
 ---
 **if you are stupid**
-do not worry , just let me know !
+,do not worry , just let me know !
