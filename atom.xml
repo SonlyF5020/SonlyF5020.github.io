@@ -4,7 +4,7 @@
   <title><![CDATA[Warlock's Blog]]></title>
   <link href="http://SonlyF5020.github.io/atom.xml" rel="self"/>
   <link href="http://SonlyF5020.github.io/"/>
-  <updated>2013-11-18T10:47:01+08:00</updated>
+  <updated>2013-11-18T10:59:03+08:00</updated>
   <id>http://SonlyF5020.github.io/</id>
   <author>
     <name><![CDATA[Warlock]]></name>
@@ -207,7 +207,7 @@
 </span><span class='line'>Missing blocks: 0</span></code></pre></td></tr></table></div></figure>
 
 
-<p>坏的情况还有很多种，就像图片尔斯泰的那句名言说的“<strong>正常的Hadoop都是相似的，异常的Hadoop各有各的异常</strong>”。事实上，lz在运行这个report命令的时候就马上看到了坏的情况，然后我默默的使用了我的宣言(<strong>永远不要停止重启电脑</strong>)，然后就出现了好的情况。</p>
+<p>坏的情况还有很多种，就像托尔斯泰的那句名言说的“<strong>正常的Hadoop都是相似的，异常的Hadoop各有各的异常</strong>”。事实上，lz在运行这个report命令的时候就马上看到了坏的情况，然后我默默的使用了我的宣言(<strong>永远不要停止重启电脑</strong>)，然后就出现了好的情况。</p>
 
 <h4>第四步</h4>
 
@@ -225,9 +225,9 @@
 <h4>附录A</h4>
 
 <p>常见问题处理办法：<br/>
-1.清空/tmp/hadoop-hadoop （成功率 10%）
-2.ssh问题请单独考量，如不能解决请参阅附录B （成功率 10%）
-3.下载新一个hadoop，从头再来一遍 （成功率 10%）
+1.清空/tmp/hadoop-hadoop （成功率 10%） <br/>
+2.ssh问题请单独考量，如不能解决请参阅附录B （成功率 10%）<br/>
+3.下载新一个hadoop，从头再来一遍 （成功率 10%）<br/>
 4.<strong>永远不要停止重启电脑</strong> （成功率 70%）</p>
 
 <h4>附录B</h4>
@@ -236,7 +236,7 @@
 QQ: 502089948<br/>
 tel: 15520552070<br/>
 weibo: @草莓豆豆龙<br/>
-email: <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#83;&#x6f;&#x6e;&#x6c;&#121;&#70;&#53;&#x30;&#x32;&#48;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x53;&#111;&#110;&#108;&#121;&#x46;&#x35;&#48;&#x32;&#48;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a>
+email: <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#83;&#x6f;&#x6e;&#108;&#x79;&#70;&#53;&#x30;&#50;&#48;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x53;&#x6f;&#x6e;&#108;&#x79;&#70;&#53;&#x30;&#50;&#48;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a>
 skype: sonlyf5020</p>
 
 <p>&mdash; Warlock &mdash;</p>
