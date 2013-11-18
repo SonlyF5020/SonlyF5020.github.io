@@ -4,7 +4,7 @@
   <title><![CDATA[Warlock's Blog]]></title>
   <link href="http://SonlyF5020.github.io/atom.xml" rel="self"/>
   <link href="http://SonlyF5020.github.io/"/>
-  <updated>2013-11-16T04:47:40+08:00</updated>
+  <updated>2013-11-18T10:47:01+08:00</updated>
   <id>http://SonlyF5020.github.io/</id>
   <author>
     <name><![CDATA[Warlock]]></name>
@@ -12,6 +12,236 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[install hadoop-2.2.0 in mac-os-10.8]]></title>
+    <link href="http://SonlyF5020.github.io/blog/2013/11/18/install-hadoop-2-dot-2-0-in-mac-os-10-dot-8/"/>
+    <updated>2013-11-18T10:45:00+08:00</updated>
+    <id>http://SonlyF5020.github.io/blog/2013/11/18/install-hadoop-2-dot-2-0-in-mac-os-10-dot-8</id>
+    <content type="html"><![CDATA[<h3>在MAC-OS-10.8安装Hadoop-2.2.0</h3>
+
+<p>本周协同大师一起弄hadoop-2，期间碰到很多奇怪的问题，也看到很多愿意分享自己的安装经验的博客。正所谓一千个人眼里有一千个哈姆雷特，一千个安装Hadoop的人可能有一千个安装问题。首先对那些愿意将自己的安装经验及其细致的分享出来的有开源精神的前辈们致敬。</p>
+
+<p>作为这一千个读者中的微不足道的一个，不敢保证您会按照我的这个安装指引一次就成功的安装完成Hadoop，只是希望给阅读者一个安装的正能量：<br/>
+1. Hadoop 是可以正常安装完成的，要对自己有信心。<br/>
+2. 你不是一个人在战斗，你的问题大家都碰到过。</p>
+
+<h4>开始</h4>
+
+<p>如标题所言，本文会告诉你如何在mac-os-10.8这个系统上安装hadoop-2.2.0，如果你的系统跟这个不一样，或者你使用的hadoop版本跟这个不一样，请重新搜索别的指引博客。这种情况下，这个博客不会给你任何有用的信息，特别是在你作为一个和我一样的新手的时候，这是一个忠告。此外，本文作为一个起步版本，只会教会你搭建最基本的<strong>单机版</strong>hadoop，也就是说，namenode, secondary namenode, 唯一的一个datanode都是你正在玩的这一个电脑。有关多机的分布式集群搭建，在lz试验成功之后会奉上。</p>
+
+<h4>第一步</h4>
+
+<p>下载Hadoop-2.2.0，地址是这个:<a href="http://apache.fayea.com/apache-mirror/hadoop/common/hadoop-2.2.0/">http://apache.fayea.com/apache-mirror/hadoop/common/hadoop-2.2.0/</a>。当然在apache上也可以有其他的连接找到这个2.2.0版本的下载地址。打开这个连接，你会看到大约5个链接，下载最大的那个hadoop-2.2.0.tar.gz，参考其他博客有提到这个hadoop-2.2.0.tar.gz是一个针对32位系统的编译过之后的版本，在64位系统上面可能会有些影响性能的东西发生。但是不要在意这些细节，更不推荐某些博客中提到的做法，他们是这样说的：</p>
+
+<p>下载hadoop-2.2.0-src.tar.gz，然后安装 <strong>数个</strong> 软件，最后编译这一部分源文件，生成一个适合于64位系统的类似hadoop-2.2.0.tar.gz解压之后的一堆东西，使用这一堆东西就可以了。</p>
+
+<p>之所以不推荐他们的做法，是因为：</p>
+
+<p>1.按照他们的做法，你一定会觉得自己就像一个单挑roshan的一级warlock一样，前途渺茫，甚至会丧心病狂的“<strong>打心眼里恨毒了hadoop</strong>”。这个时候你应该意识到，是时候停止了。</p>
+
+<p>2.他们所提供的做法，或许可以用，但是他们绝对没有足够详细的告诉你，那所谓的 <strong>数个</strong> 软件应该怎样的一个个的正确安装，怎么验证安装的正确性，以及安装的顺序，还有最重要的，安装的过程中会遇到什么样的问题，以及怎么处理</p>
+
+<p>3.最后也是最重要的一点，不这样搞也可以(是不是有点 <strong>若不自宫，也可成功</strong> 的感觉?)。</p>
+
+<p>所谓的不这样搞也可以成功，指的是不影响使用，但是你可能在命令行里看到这样一些东西：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+目前，我们忽视掉这个WARN先，不要在意这些细节</p>
+
+<h4>第二步</h4>
+
+<p>下载完了Hadoop-2.2.0 之后，下面是配置。一般而言第一步的配置是JAVA_HOME。有的博客里面会强调需要把这个etc/hadoop/hadoop-env.sh里面export JAVA_HOME给指定为一个绝对的java路径，但其实这个默认值：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export JAVA_HOME=${JAVA_HOME}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>是可以工作的。当然你不放心的话，也可以给它弄成一个绝对的路径，比如这样：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home</span></code></pre></td></tr></table></div></figure>
+
+
+<p>配置完了JAVA_HOME，下面是core-site.xml, mapred-core.xml , hdfs-site.xml 的三个配置。与hadoop-1不同的是，这些配置相关的文件想在不是放在conf目录下了，而是在etc/hadoop/目录下面。首先是core-site.xml，确保这个配置文件里面的<code>configuration</code>标签配置成这样：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;configuration&gt;
+</span><span class='line'>       &lt;property&gt;
+</span><span class='line'>                &lt;name&gt;hadoop.temp.dir&lt;/name&gt;
+</span><span class='line'>                &lt;value&gt;/tmp&lt;/value&gt;
+</span><span class='line'>        &lt;/property&gt;
+</span><span class='line'>        &lt;property&gt;
+</span><span class='line'>                &lt;name&gt;fs.default.name&lt;/name&gt;
+</span><span class='line'>                &lt;value&gt;hdfs://localhost:54310&lt;/value&gt;
+</span><span class='line'>        &lt;/property&gt;
+</span><span class='line'>&lt;/configuration&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里你需要稍微记住这个叫做/tmp的目录，因为后面可能会有些问题跟这个缓存目录里面放的东西有关。这个目录里面会缓存一些切割之后的文件块，以及各个mapreduce的一些缓存的东西。如果你碰到任何问题准备重启hadoop了，不要犹豫这个/tmp/hadoop-hadoop/的目录里面是啥，删除了再试一试。fs.default.name这个配置的意思是指定namenode，显然这里是localhost，如果建立真正意义上分布式集群的话，这个localhost应该换成namenode的IP地址。</p>
+
+<p>接着是hdfs-site.xml里面的配置，这里的配置很简单，只需要保证<code>configuration</code>标签配置成这样：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;configuration&gt;
+</span><span class='line'>  &lt;property&gt;
+</span><span class='line'>      &lt;name&gt;dfs.replication&lt;/name&gt;
+</span><span class='line'>      &lt;value&gt;1&lt;/value&gt;
+</span><span class='line'>  &lt;/property&gt;
+</span><span class='line'>&lt;/configuration&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个配置的意思是将dfs的备份数由默认的3改为1，因为这是一个单机版安装的例子，所以不想占用太多的磁盘空间的话，最好加上这个配置。</p>
+
+<p>最后一个是mapred-site.xml中的配置，确保<code>configuration</code>标签配置成这个样子就行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;configuration&gt;
+</span><span class='line'>  &lt;property&gt;
+</span><span class='line'>      &lt;name&gt;mapred.job.tracker&lt;/name&gt;
+</span><span class='line'>      &lt;value&gt;localhost:54311&lt;/value&gt;
+</span><span class='line'>  &lt;/property&gt;
+</span><span class='line'>&lt;/configuration&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你了解一点hadoop的mapreduce过程的话，你会知道这个是配置jobtracker的过程，你可以把jobtracker理解成hdfs中的namenode这种司令员的作用。如果你不了解的话，可以先无脑加上。</p>
+
+<h4>第三步</h4>
+
+<p>至此，你已经做了很多配置上的事了，剩下的只是操作。但是最好的推荐是你在这里先等一等，让配置再飞一会。你需要做的应该是：确保你的配置无误<br/>
+首先你可以尝试启动hdfs，使用命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./bin/hdfs namenode -format</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这是一个namenode 初始化的命令。初始化后，可以使用脚本start-dfs.sh来启动hdfs了，当然你可以不这个细致入微的一个个启动hadoop的各个模块，直接跑start-all.sh脚本就可以了。这样一来，你需要做的只是执行这个脚本：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./sbin/start-all.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在这个start-all.sh的脚本里面会逐步启动hadoop需要的各个组件。namenode,datanode,secondary namenode,yarn daemons,resource manager。正常的情况是，这五个东西成功启动之后，在dock中会看到有5个<strong>茶杯+纸+笔</strong>的图标。对的，是 <strong>5</strong> 个，如果你发现没有5个，比如只有4个，那么很可能后面是走不通的。这个时候，你有多重方法排除错误，第一种是重新运行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./bin/hdfs namenode -format</span></code></pre></td></tr></table></div></figure>
+
+
+<p>再尝试一次，第二种是<strong>重启电脑</strong>，简单粗暴，但是确实有效。等等，我觉得我的个人宣言应该改成<strong>永远不要停止重启电脑</strong>了。
+如果start-all.sh跑的过程中，没有出现任何问题，那么很有可能你的hadoop是已经配置好了，是不是内心还有点小激动？</p>
+
+<p>这个时候，你可以运行这个命令来查看集群状态了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./bin/hdfs dfsadmin –report</span></code></pre></td></tr></table></div></figure>
+
+
+<p>需要注意的是，这个命令在hadoop-2.2.0里面是可以工作的，但是在更早一点的版本，比如2.0.5里面是没有的。在运行这个状态之后，好的情况是你看到的结果是这样的：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Datanodes available: 1 (1 total, 0 dead)
+</span><span class='line'>
+</span><span class='line'>Live datanodes:
+</span><span class='line'>Name: 127.0.0.1:50010 (localhost)
+</span><span class='line'>Hostname: bogon
+</span><span class='line'>Decommission Status : Normal
+</span><span class='line'>Configured Capacity: 204000002048 (189.99 GB)
+</span><span class='line'>DFS Used: 4096 (4 KB)
+</span><span class='line'>Non DFS Used: 98520674304 (91.75 GB)
+</span><span class='line'>DFS Remaining: 105479323648 (98.24 GB)
+</span><span class='line'>DFS Used%: 0.00%
+</span><span class='line'>DFS Remaining%: 51.71%</span></code></pre></td></tr></table></div></figure>
+
+
+<p>坏的情况可能是这样的：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Configured Capacity: 0 (0 B)
+</span><span class='line'>Present Capacity: 0 (0 B)
+</span><span class='line'>DFS Remaining: 0 (0 B)
+</span><span class='line'>DFS Used: 0 (0 B)
+</span><span class='line'>DFS Used%: NaN%
+</span><span class='line'>Under replicated blocks: 0
+</span><span class='line'>Blocks with corrupt replicas: 0
+</span><span class='line'>Missing blocks: 0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>坏的情况还有很多种，就像图片尔斯泰的那句名言说的“<strong>正常的Hadoop都是相似的，异常的Hadoop各有各的异常</strong>”。事实上，lz在运行这个report命令的时候就马上看到了坏的情况，然后我默默的使用了我的宣言(<strong>永远不要停止重启电脑</strong>)，然后就出现了好的情况。</p>
+
+<h4>第四步</h4>
+
+<p>是时候来一波进攻了! 输入这个命令跑一个简单的，不依赖文件的mapreduce任务：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi 20 20</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个任务是一个计算圆周率的任务，相对于wordcount命令的优势是，你不需要专门准备一个文件用于wordcount。你暂时不需要知道后面的两个20是什么意思。你只需要知道，如果这个命令执行完之后，你的命令行出现诸如3.1700000000000的东西，说明hadoop已经在正常执行mapreduce程序了(<strong>这精度实在不敢恭维</strong>)。同样你也可能看到各种各样的异常，不要灰心，如果之前的./bin/hdfs dfsadmin –report出现的是好的情况，而这个命令确产生了恶心的异常的话，推荐两种做法：</p>
+
+<p>1.大刀向/tmp砍去，把hadoop-hadoop目录下的东西全部干掉，然后重新尝试。<br/>
+2.<strong>永远不要停止重启电脑</strong></p>
+
+<h4>附录A</h4>
+
+<p>常见问题处理办法：<br/>
+1.清空/tmp/hadoop-hadoop （成功率 10%）
+2.ssh问题请单独考量，如不能解决请参阅附录B （成功率 10%）
+3.下载新一个hadoop，从头再来一遍 （成功率 10%）
+4.<strong>永远不要停止重启电脑</strong> （成功率 70%）</p>
+
+<h4>附录B</h4>
+
+<p>如果附录A中的所有办法都没有办法解决你正在碰到的异常，lz想对你说三个字:&ldquo;<strong>请联系我!</strong>&rdquo;:<br/>
+QQ: 502089948<br/>
+tel: 15520552070<br/>
+weibo: @草莓豆豆龙<br/>
+email: <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#83;&#x6f;&#x6e;&#x6c;&#121;&#70;&#53;&#x30;&#x32;&#48;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x53;&#111;&#110;&#108;&#121;&#x46;&#x35;&#48;&#x32;&#48;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a>
+skype: sonlyf5020</p>
+
+<p>&mdash; Warlock &mdash;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[sencond blog]]></title>
