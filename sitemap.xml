@@ -2,28 +2,36 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://SonlyF5020.github.io/blog/2013/11/16/stupid/</loc>
-        <lastmod>2013-11-16T04:47:34+08:00</lastmod>
+        <lastmod>2014-07-01T22:32:35+08:00</lastmod>
     </url>
     <url>
         <loc>http://SonlyF5020.github.io/blog/2013/11/16/sencond-blog/</loc>
-        <lastmod>2013-11-16T03:41:23+08:00</lastmod>
+        <lastmod>2014-07-01T22:32:35+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://SonlyF5020.github.io/blog/2013/11/18/install-hadoop-2-dot-2-0-in-mac-os-10-dot-8/
         </loc>
-        <lastmod>2013-11-18T11:01:35+08:00</lastmod>
+        <lastmod>2014-07-01T22:32:35+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://SonlyF5020.github.io/blog/2014/07/01/find-octopress-and-come-back/</loc>
+        <lastmod>2014-07-01T23:13:45+08:00</lastmod>
     </url>
     <url>
         <loc>http://SonlyF5020.github.io/blog/archives/</loc>
-        <lastmod>2013-11-18T11:01:35+08:00</lastmod>
+        <lastmod>2014-07-01T23:13:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://SonlyF5020.github.io/come-back/</loc>
+        <lastmod>2014-07-01T23:08:16+08:00</lastmod>
     </url>
     <url>
         <loc>http://SonlyF5020.github.io/</loc>
-        <lastmod>2013-11-18T11:01:35+08:00</lastmod>
+        <lastmod>2014-07-01T23:13:45+08:00</lastmod>
     </url>
     <url>
         <loc>http://SonlyF5020.github.io/robots.txt</loc>
-        <lastmod>2013-11-15T21:28:18+08:00</lastmod>
+        <lastmod>2014-07-01T22:32:35+08:00</lastmod>
     </url>
 </urlset>
