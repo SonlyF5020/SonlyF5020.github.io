@@ -3,7 +3,7 @@ layout: post
 title: "find octopress and come back"
 date: 2014-07-01 22:33
 comments: true
-categories:[Awesome, Amazing, Beautiful, Cool] 
+categories:
 ---
 
 ###找回octopress,重新上路
